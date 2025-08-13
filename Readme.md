@@ -3,8 +3,9 @@
 
 ##### Lesson1: Introduction to AI Agents
 
+- Autonomy, decision-making, adaptation (learn and improve over with time feedback)
 
-
+- 
 
 
 
