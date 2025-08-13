@@ -9,6 +9,13 @@ Agent: Performs specific taks and makes decisiones based on its environemnt
 Large Language Model: focuses on understanding and generating human-like text.
 
 
+Productivity and Efficiency: automate repetitive tasks, freeuing up human resources for more complex activities.
+Handle dynamic and real-time environments like finance or customer service.
+
+
+- Leading AI Agent framework: LangChain: designed for LLMs, supports agent workflow for NLP and decision-making tasks.
+- CrewAI: focuses on collabolartieve, role-bases AI agents that work in teams to tackle complex tasks
+
  
 
 
