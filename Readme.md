@@ -5,7 +5,11 @@
 
 - Autonomy, decision-making, adaptation (learn and improve over with time feedback)
 
-- 
+Agent: Performs specific taks and makes decisiones based on its environemnt
+Large Language Model: focuses on understanding and generating human-like text.
+
+
+ 
 
 
 
