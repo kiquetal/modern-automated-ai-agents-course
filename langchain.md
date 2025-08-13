@@ -156,6 +156,54 @@ This architecture allows for powerful AI workflows that combine the multi-agent 
 
 The `wikipedia_qa.py` script demonstrates a practical implementation of CrewAI with LangChain to create a Wikipedia question-answering system. This implementation showcases how to combine these frameworks to build a specialized knowledge extraction and analysis system.
 
+### Implementation Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant WRC as WikipediaResearchCrew
+    participant LCL as LangChain Loader
+    participant LCS as LangChain Splitter
+    participant RA as Researcher Agent
+    participant AA as Analyst Agent
+    participant Wiki as Wikipedia
+
+    User->>WRC: Initialize(wiki_url, questions)
+    activate WRC
+    
+    WRC->>WRC: setup_crew()
+    
+    WRC->>LCL: WebBaseLoader(wiki_url)
+    activate LCL
+    LCL->>Wiki: Fetch Page Content
+    Wiki-->>LCL: HTML Content
+    LCL->>WRC: documents
+    deactivate LCL
+    
+    WRC->>LCS: RecursiveCharacterTextSplitter
+    activate LCS
+    LCS->>LCS: Split documents
+    LCS-->>WRC: document_chunks
+    deactivate LCS
+    
+    WRC->>RA: Assign research_task
+    note over RA: Extract key information<br>from Wikipedia content
+    
+    WRC->>AA: Prepare analysis_task
+    note over AA: Format questions<br>for analysis
+    
+    WRC->>WRC: Build context from chunks
+    
+    WRC->>+RA: Execute research_task
+    RA-->>-AA: Research findings
+    
+    WRC->>+AA: Execute analysis_task
+    AA-->>-WRC: Detailed answers
+    
+    WRC-->>User: Final results
+    deactivate WRC
+```
+
 ### Key Components
 
 1. **Class Structure**
