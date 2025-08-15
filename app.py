@@ -81,14 +81,13 @@ def run_crewai_flow(model_name: str, sources: List[str], questions: List[str], c
 
     # Create agents
     researcher = Agent(
-        role="Wikipedia/Web Researcher",
-        goal="Extract and organize key information from provided web articles",
+        role="Content Summarizer",
+        goal="Summarize the provided text content",
         backstory=(
-            "You are an expert at reading and extracting important information from "
-            "Wikipedia and other web pages, producing structured summaries."
+            "You are an expert at reading and summarizing text content to extract key information."
         ),
         verbose=True,
-        allow_delegation=True,
+        allow_delegation=False,
         llm=llm,
     )
 
@@ -108,9 +107,9 @@ def run_crewai_flow(model_name: str, sources: List[str], questions: List[str], c
     src_text = "\n".join(f"- {s}" for s in sources) if sources else "(no sources)"
     research_task = Task(
         description=(
-            "Read and extract key information from the following sources and prepare a comprehensive summary.\n" + src_text
+            "Read and summarize the provided text content. The content was extracted from these sources:\n" + src_text
         ),
-        expected_output="A comprehensive, well-structured summary of the provided sources.",
+        expected_output="A comprehensive, well-structured summary of the provided content.",
         agent=researcher,
     )
 
